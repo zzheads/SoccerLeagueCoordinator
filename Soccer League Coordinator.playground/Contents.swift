@@ -124,6 +124,14 @@ func spreadPlayers (orderOfAppend: [Int], playersArray: [[String: (height: Int, 
     return (teams[0], teams[1], teams[2])
 }
 
+func printTeam(name: String, team: [[String: (Int, Bool, String)]]) {
+    print(name)
+    for i in 0..<team.count {
+        print("\(i). \(team[i].keys.first!)")
+    }
+    print()
+}
+
 func printReportAboutSpread (orderOfAppend: [Int], playersArray: [[String: (height: Int, experience: Bool, guardians: String)]]) {
     let spreaded = spreadPlayers(orderOfAppend: orderOfAppend, playersArray: players)
     
@@ -137,12 +145,15 @@ func printReportAboutSpread (orderOfAppend: [Int], playersArray: [[String: (heig
     let sumDifferences = abs(averageHeightDragons-averageHeightSharks)+abs(averageHeightRaptors-averageHeightDragons)+abs(averageHeightSharks-averageHeightRaptors)
     
     print("Order of appending players is: \(orderOfAppend)")
+    printTeam(name: "Sharks", team: teamSharks)
+    printTeam(name: "Dragons", team: teamDragons)
+    printTeam(name: "Raptors", team: teamRaptors)
     print("Average height of all players is: \(averageHeight)")
     print("Average height of Sharks team is: \(calcAverageHeight(team: teamSharks))")
     print("Average height of Dragons team is: \(calcAverageHeight(team: teamDragons))")
     print("Average height of Raptors team is: \(calcAverageHeight(team: teamRaptors))")
     print("The summ of differences of average heights of teams is: \(sumDifferences)")
-    print(" ")
+    print()
 }
 
 var orderOfAppend = [0,1,2,2,1,0] // in which order best players will be spread between teams
